@@ -1,7 +1,11 @@
 <?php
 class Cadastro extends CI_Controller{
     public function index(){
-        $this->load->view('cadastro');
+
+        $this->load->model('Home_Model');
+
+        $dados['get_home'] = $this->Home_Model->get_home();
+        $this->load->view('cadastro', $dados);
     }
 
     public function gravar(){
@@ -22,6 +26,20 @@ class Cadastro extends CI_Controller{
 
         else{
             echo "Campos vazios";
+        }
+    }
+
+    public function editar($id){
+
+        $this->load->model('Home_Model');
+        if(isset($id)){
+
+            $dados['form'] = $this->Home_Model->update_home($id);
+            $this->load->view('cadastro', $dados);
+        }
+
+        else{
+            echo "sem id";
         }
     }
 }
