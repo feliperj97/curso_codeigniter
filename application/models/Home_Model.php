@@ -9,7 +9,7 @@ class Home_Model extends CI_Model{
 
     public function insert_home(Array $dados){
         if(!empty($dados)){
-            return $this->db->insert();
+            return $this->db->insert('tb_home', $dados);
         }
         else{
             return false;

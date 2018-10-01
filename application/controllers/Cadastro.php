@@ -6,11 +6,10 @@ class Cadastro extends CI_Controller{
 
     public function gravar(){
 
-        print_r($_POST);
-        die();
+
         $this->load->model('Home_Model');
        if(!empty($_POST)){
-            if($this->Home_Model->insert_home()){
+            if($this->Home_Model->insert_home($_POST)){
 
                 echo "Cadastro feito com sucesso!";
 
