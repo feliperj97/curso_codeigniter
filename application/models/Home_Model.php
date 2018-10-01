@@ -22,6 +22,13 @@ class Home_Model extends CI_Model{
             return $this->db->get('tb_home')->row_array();
         }
 
+        elseif (isset($id) && !empty($dados)) {
+
+            $this->db->where('tb_home.id', $id);
+            return $this->db->update('tb_home');
+            
+        }
+
         else{
             return false;
         }

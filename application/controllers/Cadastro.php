@@ -35,7 +35,20 @@ class Cadastro extends CI_Controller{
         if(isset($id)){
 
             $dados['form'] = $this->Home_Model->update_home($id);
+            $dados['get_home'] = $this->Home_Model->get_home();
+
             $this->load->view('cadastro', $dados);
+        }
+
+        elseif (!empty($_POST)) {
+            if($this->Home_Model->update_home($id, $_POST)){
+                echo "Editado com sucesso";
+            }
+
+            else {
+                echo "Erro ao editar";
+            }
+   
         }
 
         else{
