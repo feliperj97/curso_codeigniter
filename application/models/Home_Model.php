@@ -16,8 +16,8 @@ class Home_Model extends CI_Model{
         }
     }
 
-    public function update_home($id){
-        if(isset($id)){
+    public function update_home($id, $dados){
+        if(isset($id) && empty($dados)){
             $this->db->where('tb_home.id', $id);
             return $this->db->get('tb_home')->row_array();
         }
@@ -25,8 +25,8 @@ class Home_Model extends CI_Model{
         elseif (isset($id) && !empty($dados)) {
 
             $this->db->where('tb_home.id', $id);
-            return $this->db->update('tb_home');
-            
+            return $this->db->update('tb_home', $dados);
+
         }
 
         else{

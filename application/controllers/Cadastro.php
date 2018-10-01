@@ -5,6 +5,8 @@ class Cadastro extends CI_Controller{
         $this->load->model('Home_Model');
 
         $dados['get_home'] = $this->Home_Model->get_home();
+        $dados['url'] = base_url('index.php/cadastro/gravar');
+
         $this->load->view('cadastro', $dados);
     }
 
@@ -32,15 +34,16 @@ class Cadastro extends CI_Controller{
     public function editar($id){
 
         $this->load->model('Home_Model');
-        if(isset($id)){
+        if(isset($id) && empty($_POST)){
 
-            $dados['form'] = $this->Home_Model->update_home($id);
+            $dados['form'] = $this->Home_Model->update_home($id, null);
             $dados['get_home'] = $this->Home_Model->get_home();
+            $dados['url'] = base_url('index.php/cadastro/editar/' . $id);
 
             $this->load->view('cadastro', $dados);
         }
 
-        elseif (!empty($_POST)) {
+        elseif (isset($id) && !empty($_POST)) {
             if($this->Home_Model->update_home($id, $_POST)){
                 echo "Editado com sucesso";
             }

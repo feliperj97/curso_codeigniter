@@ -9,7 +9,7 @@
 <?php endif; ?>
    
 
-<form action="<?= base_url('index.php/cadastro/gravar'); ?>" method="post">
+<form action="<?= $url ?>" method="post">
     <input type="text" name="name_site" value="<?= isset($form['name_site']) ? $form['name_site'] : ''; ?>">
     <input type="text" name="url" value="<?= isset($form['url']) ? $form['url'] : ''; ?>">
     <input type="submit" value="Gravar">
