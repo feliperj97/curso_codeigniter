@@ -1,7 +1,7 @@
 <?php if(!empty($get_home)): ?>
 		<?php foreach($get_home as $index => $result): ?>
             <a href="<?= base_url('index.php/cadastro/editar/' . $result->id) ?>"><?= $result->name_site ?></a>
-            
+            <a href="<?= base_url('index.php/cadastro/delete/' . $result->id) ?>">Deletar</a><br><br>
         <?php endforeach; ?>
         
 	<?php else: ?>

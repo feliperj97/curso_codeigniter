@@ -34,6 +34,19 @@ class Home_Model extends CI_Model{
         }
     }
 
+    public function delete_home($id){
+        if(isset($id)){
+            $this->db->where('tb_home.id', $id);
+            return $this->db->delete('tb_home');
+        }
+
+        else{
+
+            return false;
+
+        }
+    }
+
 }
 
 ?>

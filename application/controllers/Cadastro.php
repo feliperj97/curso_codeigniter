@@ -58,6 +58,25 @@ class Cadastro extends CI_Controller{
             echo "sem id";
         }
     }
+
+    public function delete(){
+        $this->load->model('Home_Model');
+        if(isset($id)){
+            if($this->Home_Model->delete_home($id)){
+
+                echo "Deletado com sucesso";
+
+            }
+
+            else{
+                echo "erro ao deletar";
+            }
+        }
+
+        else{
+            echo "id vazio";
+        }
+    }
 }
 
 
